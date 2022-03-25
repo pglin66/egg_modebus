@@ -1,0 +1,54 @@
+{
+  "name": "egg_modebus",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "aedes": "^0.46.3",
+    "egg": "^2.15.1",
+    "egg-cors": "^2.2.3",
+    "egg-jwt": "^3.1.7",
+    "egg-scripts": "^2.11.0",
+    "egg-socket.io": "^4.1.6",
+    "egg-view-ejs": "^2.0.1",
+    "mqtt": "^4.3.7",
+    "serialport": "^10.4.0",
+    "websocket-stream": "^5.5.2"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.11.0",
+    "egg-mock": "^3.21.0",
+    "eslint": "^5.13.0",
+    "eslint-config-egg": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-egg_modebus",
+    "stop": "egg-scripts stop --title=egg-server-egg_modebus",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "10"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT"
+}
