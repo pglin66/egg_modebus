@@ -2,8 +2,8 @@
  * @Author: pglin66@126.com
  * @Date: 2022-03-25 11:50:31
  * @LastEditors: pglin66@126.com
- * @LastEditTime: 2022-03-25 17:21:27
- * @FilePath: \mps_merchant\src\views\shops\pushShop\ws.vue
+ * @LastEditTime: 2022-03-26 08:29:50
+ * @FilePath: \sf-midway-adminf:\iot\2022\egg_modebus\ws.vue
  * @Description: 
 -->
 <template>
@@ -31,8 +31,16 @@
             <el-option label="1" value="1"></el-option>
             <el-option label="2" value="2"></el-option>
         </el-select>
-        <el-button @click="hanbleContent">1</el-button>
-        <el-button @click="hanbleWrite">2</el-button>
+        {{content}}
+        <el-input v-model="content">
+
+        </el-input>
+        <el-button @click="hanbleContent">连接</el-button>
+        <el-button @click="hanbleWrite">发送</el-button>
+
+        <el-button @click="hanbleWrite('010600000001480A')">打开空调</el-button>
+
+        <el-button @click="hanbleWrite('01060000000089CA')">关闭空调</el-button>
     </div>
 
 </template>
@@ -42,7 +50,7 @@
 
     const state = reactive({
         COMList: [],
-       
+        content:'',
         form:{
             path:'COM3',
             baudRate: 9600,  //波特率设置
@@ -93,8 +101,8 @@
         socket.emit('serialport/connect', state.form);
     }
 
-    const hanbleWrite = () => {
-        socket.emit('serialport/write', '1');
+    const hanbleWrite = (content) => {
+        socket.emit('serialport/write', content||state.content);
     }
-    const { COMList,form } = toRefs(state)
+    const { COMList,form,content } = toRefs(state)
 </script>

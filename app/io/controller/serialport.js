@@ -2,8 +2,8 @@
  * @Author: pglin66@126.com
  * @Date: 2022-03-23 15:05:24
  * @LastEditors: pglin66@126.com
- * @LastEditTime: 2022-03-23 15:34:50
- * @FilePath: \mps_merchante:\iot\egg_modebus\app\io\controller\serialport.js
+ * @LastEditTime: 2022-03-25 22:09:07
+ * @FilePath: \sf-midway-adminf:\iot\2022\egg_modebus\app\io\controller\serialport.js
  * @Description: 
  */
 //var iconv = require('iconv-lite');  //引入数据编码格式转换模块
@@ -56,7 +56,8 @@ class DefaultController extends Controller {
     const message = ctx.args[0];
     console.log(message)
     //var buf_once = new Buffer(message, 'hex');//ascii  utf8 utf16le - 2 或 4 个字节 ucs2 - utf16le  base64  latin1  binary - latin1 hex 
-    port.write(message, function (err, results) {
+    var newdata = new Buffer(message,'hex');//先把数据存在buf里面
+    port.write(newdata, function (err, results) {
       if (err) {
           console.log('err ' + err);
       }
